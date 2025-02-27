@@ -1,0 +1,18 @@
+Informe Final: Asistente Virtual Jime para Cobranza Preventiva
+1. Resultados
+La implementación de Jime logró automatizar el proceso de cobranza preventiva de Edesur, mejorando la eficiencia en la gestión de pagos y la comunicación con los usuarios. Sin embargo, para lograr una interacción fluida, fue necesario iterar varias veces la idea original y ajustar el código. Durante este proceso, se recurrió al apoyo de GPT para perfeccionar los flujos conversacionales y optimizar las respuestas generadas por el chatbot.
+
+Los principales resultados incluyen:
+
+Automatización exitosa del recordatorio de deudas y la gestión de pagos, reduciendo la intervención manual.
+Interacción personalizada, permitiendo negociar fechas de pago y ofrecer múltiples opciones de pago.
+Reducción de tiempos en el proceso de cobranza, liberando recursos humanos para casos más complejos.
+La solución cumple con las expectativas al lograr una cobranza más eficiente y respetuosa, mejorando la experiencia del usuario.
+
+2. Conclusiones
+Los objetivos del proyecto fueron alcanzados:
+
+Automatización efectiva del proceso de cobranza y mejora en la comunicación con los usuarios.
+Eficiencia en la implementación gracias a la integración con Telegram y la API de Groq.
+Satisfacción del usuario mediante respuestas claras y negociaciones de pago flexibles.
+A pesar del éxito, el sistema puede mejorarse, por ejemplo, integrando más métodos de pago o expandiendo el chatbot a otras plataformas. El proyecto ha sido exitoso y es escalable, con potencial para mejorar aún más en el futuro.
