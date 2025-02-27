@@ -1,0 +1,89 @@
+Presentación del problema a abordar
+
+El problema elegido para resolver es la cobranza preventiva de un servicio a personas que no están todavía en deuda. Esto es importante porque permite a las empresas evitar pérdidas financieras y mantener relaciones positivas con sus clientes.
+
+Desarrollo de la propuesta de solución
+
+La solución propuesta es Jime, un asistente virtual para Telegram que resuelve un caso de cobranza preventiva con personas que no están todavía en deuda. La idea es enviar un recordatorio de pago y llegar a un acuerdo de pago con una fecha de corte futura. 
+
+En el prompt indicaremos distintos pasos y escenarios asociados al pago de la deuda. Pensé hacerlo en tres pasos:
+1. Validación de identidad del usuario.
+2. Comunicación de los datos del pago y pregunta por posible acuerdo.
+3. Manejo de objeciones.
+4. Despedida y cierre de la conversación.
+
+También pensé darle contexto de que es un asistente virtual del servicio financiero de una empresa de servicios y algunas recomendaciones de voz y tono, que le sirvan de contexto como reglas generales. 
+Elegí telegram porque sé que la integración con la API genAI es fácil y viable, según lo visto en la clase del 20 de enero.
+
+Me queda pendiente pensar cuál es la empresa de servicios que voy a elegir. Me gustaría una de servicios públicos: luz, gas, agua, teléfono.
+
+Justificación de la viabilidad del proyecto
+
+El proyecto es viable técnicamente porque existen herramientas como la API genAI que facilitan la integración de modelos de IA en aplicaciones de mensajería como Telegram. 
+
+Además, el proyecto no requiere de recursos computacionales significativos y puede ser desarrollado en un plazo de tiempo razonable (estimo 5 días de desarrollo con mi experiencia profesional).
+
+En cuanto a su utilidad, sé que muchas empresas utilizan servicios de inteligencia artificial para su journey map de cobranzas, porque sé que es un tipo de gestión habitual en las empresas y que es factible de automatización.
+
+Hay servicios públicos cuyos cortes asociados a la falta de pago son un costo recurrente para las empresas, y pienso que también el recordatorio puede ayudar a que los usuarios no se olviden de pagar, y a optimizar los recursos asociados a gastos de cortes y reconexión.
+
+Objetivos
+Lograr compromisos de pagos adeudados en el servicio de luz.
+Evitar costos asociados a gastos de cortes y de reconexión (tanto para el usuario como para la empresa)
+Mejorar la imagen de la empresa logrando automatizar este proceso y estableciendo un punto de contacto cordial y distendido con el usuario.
+
+Metodología
+
+
+Desarrollo del prompt: Elaboración de las instrucciones precisas para lograr la operación.
+Conexión e integración con Telegram.
+Testeos manuales del asistente virtual para verificar si el prompt necesita iteración.
+Iteración del prompt
+Nuevas pruebas / ajustes (si fueran necesarios)
+Paso a producción: entrega final.
+
+
+Herramientas y tecnologías
+
+Técnicas de prompting
+
+Zero shoot prompting: Para acciones a seguir, las instrucciones deben ser concretas y simples, de manera que el asistente sea capaz de seguirlas. Como no está necesariamente basado en un conocimiento previo, sí debemos indicarle paso a paso cómo actuar, con el fin de evitar alucinaciones.
+
+
+One shoot prompting: Con el objetivo de mitigar clasificaciones incorrectas de intenciones, incorporaré algunos ejemplos a los prompts.
+
+Integraciones
+Nuestro prompt estará integrado desde la API de GenAI con Telegram. Para ello, seguiremos la metodología propuesta en la clase sincrónica del día 20 de enero, donde se explicó el paso a paso.
+En caso de que el workaround no funcione en dicha integración, tengo un plan B, que es hacer el desarrollo con un Agent Tool en Flowise y exportarlo en HTML para que se pueda interactuar con él.
+
+
+Implementación
+
+Aquí tenemos un primer modelo del prompt: 
+
+Your name is Jimena (she/her).
+Your role: Chatbot conversational assistant
+Tone:
+Maintain formal language, using the formal form of address at all times. Clear and persuasive. Always speak and respond in Spanish.
+
+
+Conversational Scope:
+Limit your responses strictly to commit the user’s payment as soon as possible or negotiate new conditions of payment for them. Do not provide information or engage in discussions outside the scope. If the user requests services beyond this scope, kindly redirect them to the primary purpose of the conversation.
+
+You're speaking with an user with this information:
+Provided info: Name provided: Jorge Martínez, payment amount provided: 3000, currency provided: pesos, product provided: factura de electricidad, limit days provided: 5 days, due date provided: today’s date, today’s date: today is Feb 10.
+
+
+Debt Collection Process:
+-First, confirm if you're talking to the right user by saying "Hola soy Jimena, asistente virtual de Edesur, ¿hablo con...?" 
+
+Once you got the answer:
+------If you're talking to the wrong person, end the call by saying goodbye to the user.
+------If you confirm that you’re talking to the right person, inform the debt amount of electricity biling and ask for a commitment for the corresponding due date. 
+
+Managing payment commitment:
+
+–If the user commits to the payment date, thank them by saying "Gracias por tu compromiso de pago. Recuerda que puedes hacerlo a través de tu home banking o a través de Mercado Pago. ¡Que tengas un buen día! Hasta pronto"..
+-If the user refuses to pay on the due date, negotiate a new date within the limit days provided.
+-If the user refuses to pay, end the call by saying "Entiendo tu situación. En los próximos días nos contactaremos contigo para encontrar una solución. ¡Hasta luego!".
+-If the user accepts the new payment date, thank the commitment by saying "Gracias por tu compromiso de pago. Recuerda que puedes hacerlo a través de tu home banking o a través de Mercado Pago. ¡Que tengas un buen día! Hasta pronto.".
