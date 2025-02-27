@@ -1,2 +1,2 @@
 # Jime, asistente virtual para Telegram para cobranza preventiva de la empresa de luz
-Proyecto Final del curso Inteligencia Artificial: Generación de Prompts, de Coderhouse de Facundo Beret
+Proyecto Final del curso Inteligencia Artificial: Generación de Prompts, de Coderhouse de Facundo Beret. Consta de tres archivos: Descripción del proyecto con todos los datos de objetivos, metodología y características. Trabajo final, con la misma información más resumida y el detalle del código para la implementación. Resultados y conclusiones, con el detalle de las reflexiones realizadas a partir de la implementación del asistente virtual.
